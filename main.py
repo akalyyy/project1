@@ -58,7 +58,7 @@ for file in input_folder:
             log_file.write(f"{file} has been quarantined\n")
 
             quarantined_count+=1
-            quarantined_files.append(f"{file} moved from {config["input_folder"]} to {final_q_path}.")
+            quarantined_files.append(f"{file} moved from {config['input_folder']} to {final_q_path}.")
         
     except Exception as e:
         error_message = f"Error processing file {file}: {e}"
