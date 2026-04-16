@@ -2,5 +2,6 @@
   "input_folder": "input",
   "processed_folder": "processed",
   "quarantine_folder": "quarantine",
-  "logs_folder": "logs"
+  "logs_folder": "logs",
+  "reports_folder": "reports"
 }
