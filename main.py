@@ -26,19 +26,19 @@ for file in input_folder:
         destination = config["processed_folder"] + "/" + category + "/" + extension
         os.makedirs(destination, exist_ok=True)
 
-        move_file(file, config["input_folder"], destination)
+        final_path = move_file(file, config["input_folder"], destination)
 
         log_file.write(f"{file} has been processed")
 
         processed_count+=1
-        processed_files.append(f"{file} moved from {config["input_folder"]} to {destination}.")
+        processed_files.append(f"{file} moved from {config["input_folder"]} to {final_path}.")
     else:
-        move_file(file, config["input_folder"], config["quarantine_folder"])
+        final_q_path = move_file(file, config["input_folder"], config["quarantine_folder"])
 
         log_file.write(f"{file} has been quarantined")
 
         quarantined_count+=1
-        quarantined_files.append(f"{file} moved from {config["input_folder"]} to {config["quarantine_folder"]}.")
+        quarantined_files.append(f"{file} moved from {config["input_folder"]} to {final_q_path}.")
 
 log_file.close()
 summary(config, processed_files, quarantined_files, processed_count, quarantined_count)
