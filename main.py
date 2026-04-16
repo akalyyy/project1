@@ -8,6 +8,9 @@ from Report_summary import summary
 with open("config.json", "r") as config_file:
     config = json.load(config_file)
 
+for key in ["input_folder", "processed_folder", "quarantine_folder", "reports_folder", "logs_folder"]:
+    os.makedirs(config[key], exist_ok=True)
+
 input_folder = os.listdir(config["input_folder"])
 log_file = open(f"{config['logs_folder']}/log.txt", "w")
 
