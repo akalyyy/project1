@@ -2,6 +2,7 @@ import os
 import json
 from Validating_names import validation
 from File_mover import move_file
+from File_sorting import get_category, get_extension
 
 with open("config.json", "r") as config_file:
     config = json.load(config_file)
@@ -13,7 +14,11 @@ quarantined_count = 0
 
 for file in input_folder:
     if validation(file) == True:
-        move_file(file, config["input_folder"], config["processed_folder"])
+        category = get_category(file)
+        extension = get_extension(file)
+        destination = config["processed_folder"] + "/" + category + "/" + extension
+        os.makedirs(destination, exist_ok=True)
+        move_file(file, config["input_folder"], destination)
         log_file.write(f"{file} has been processed")
         processed_count+=1
     else:
